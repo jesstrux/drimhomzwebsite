@@ -1,0 +1,76 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
+<link rel="import" href="header-bar.html">
+<link rel="import" href="inspiration-page.html">
+
+<dom-module id="drim-homz">
+	<template>
+		<style>
+			:host {
+				display: block;
+			}
+		</style>		
+
+		<firebase-app
+			auth-domain="letterplace-c103c.firebaseapp.com"
+			database-url="https://drimhomz-7f6b5.firebaseio.com/"
+			api-key="AIzaSyBrswBkb_15k_nsMyCKrkJnGH_g-ivTNQQ">
+		</firebase-app>
+
+		<header-bar
+			user="{{user}}"
+			page="{{currentPage}}"
+			on-open-login-form="openLoginForm"
+			on-open-register-form="openRegisterForm"></header-bar>
+
+		<inspiration-page
+			images="{{app.inspImages}}">
+			</inspiration-page>
+	</template>
+	<script>
+		Polymer({
+			is: 'drim-homz',
+			properties: {
+				app: {
+					notify: true,
+					value: function(){
+						return {
+							user: {},
+							inspImages: [
+								{
+									url: "images/slideshow/slide1.jpg",
+									title: "Slide one",
+									description: "This is some very strange behavioral stubborns."
+								},
+								{
+									url: "images/slideshow/slide2.jpg",
+									title: "Slide two",
+									description: "This is some very strange behavioral stubborns."
+								},
+								{
+									url: "images/slideshow/slide3.jpg",
+									title: "Slide three",
+									description: "This is some very strange behavioral stubborns."
+								},
+								{
+									url: "images/slideshow/slide4.jpg",
+									title: "Slide four",
+									description: "This is some very strange behavioral stubborns."
+								}
+							]
+						}
+					}
+				},
+				currentPage: {
+					notify: true
+				}
+			},
+			openLoginForm: function(){
+
+			},
+			openRegisterForm: function(){
+				
+			}
+		});
+	</script>
+</dom-module>

@@ -1,0 +1,57 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-styles/paper-styles.html">
+
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<dom-module id="shared-styles">
+	<template>
+		<style>
+			/*FLEX*/
+			.flex, .flex.horizontal{
+				@apply(--layout);
+			}
+			.flex.vertical{
+				@apply(--layout-vertical);
+			}
+			.flex.center-center{
+				@apply(--layout-center-center);
+			}
+			.flex.v-center{
+				@apply(--layout-center-justified);
+			}
+			.flex.h-center{
+				@apply(--layout-center);
+			}
+
+
+			/*FONTS*/
+			.headline {
+		      @apply(--paper-font-headline);
+		    }
+
+		    .title {
+		      @apply(--paper-font-title);
+		    }
+
+		    .subhead {
+		      @apply(--paper-font-subhead);
+		    }
+
+		    .body1 {
+		      @apply(--paper-font-body1);
+		    }
+
+		    .body2 {
+		      @apply(--paper-font-body2);
+		    }
+
+		    .caption {
+		      @apply(--paper-font-caption);
+		    }
+
+		    .button {
+		      @apply(--paper-font-button);
+		    }
+		</style>
+	</template>
+</dom-module>

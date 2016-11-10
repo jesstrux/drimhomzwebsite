@@ -1,0 +1,48 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-styles/paper-styles.html">
+
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+<dom-module id="inspiration-item">
+	<template>
+		<style>
+			:host {
+				display: -webkit-flex;
+				display: -moz-flex;
+				display: -ms-flex;
+				display: -o-flex;
+				display: flex;
+
+				-webkit-flex-direction: column;
+				-moz-flex-direction: column;
+				-ms-flex-direction: column;
+				-o-flex-direction: column;
+				flex-direction: column;
+				
+				background-color: white;
+				box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+			}
+			#image{
+				background-color: #ddd;
+				background-position: center;
+				background-size: cover;
+				height: 150px;
+				width: 100%;
+			}
+			#title, #detail{
+				padding: 16px;
+			}
+		</style>
+
+	</template>
+	<script>
+		Polymer({
+			is: 'inspiration-item',
+			properties:{
+				item: {
+					notify: true,
+					value: {}
+				}
+			}
+		});
+	</script>
+</dom-module>

@@ -1,0 +1,147 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="dh-slideshow.html">
+<link rel="import" href="dh-footer.html">
+<link rel="import" href="dh-grid-item.html">
+
+<dom-module id="inspiration-page">
+	<template>
+		<style>
+			:host {
+				display: block;
+				/*background-color: red;*/
+				position: relative;
+			}
+			.container{
+				padding: 0 80px;
+			}
+			.headline, .subhead{
+				text-align: center;
+			}
+			.headline{
+				margin-top: 60px;
+				margin-right: 10px;
+				font-weight: normal;
+				font-size: 35px;
+				margin-bottom: 0;
+				font-weight: 300;
+			}
+			.subhead{
+				margin: 0;
+			}
+			.grid{
+				@apply(--layout);
+				margin: 10px 0;
+				padding: 5px 0;
+			}
+			.card{
+				background-color: white;
+				box-shadow: 0 1px 2px rgba(0,0,0,.3);
+			}
+			.card .image{
+				background-color: #ddd;
+				background-position: center;
+				background-size: cover;
+				height: 220px;
+			}
+			.card .content{
+				padding: 16px;
+				text-align: justify;
+			}
+			.content h3{
+				text-align: left;
+				margin-top: 5px;
+				margin-bottom: 10px;
+			}
+			.grid .card{
+				margin: 10px;
+				width: calc(33.333% - 20px);
+				max-width: calc(33.333% - 20px) !important;
+				min-width: calc(33.333% - 20px) !important;
+			}
+			.layout{
+				@apply(--layout);
+				/*@apply(--layout-center);*/
+			}
+			paper-button{
+				background-color: #7cb342;
+				padding-left: 50px;
+				padding-right: 50px;
+				display: inline-block;
+				margin: auto;
+				left: 0;
+				right: 0;
+				color: #fff;
+			}
+		</style>
+		
+		<dh-slideshow autoplay="true"></dh-slideshow>
+
+		<h3 class="headline">Create the home you want</h3>
+		<p class="subhead">The way you want, when you want.</p>
+
+		<div class="layout">
+			<br><br><br>
+			<paper-button raised>GET STARTED</paper-button>
+		</div>
+
+		<div class="container">
+			<div class="grid">
+				<div class="card">
+					<div class="image" style="background: url(../images/housedesign.jpg)"></div>
+					<div class="content">
+						<h3>Discover your taste</h3>
+
+						Maybe you already know what you want, or maybe you don't; either way we give you access to lots and lots of home designs that have inspired both us, your fellow house enthusiasts and even proposed by our experts, then all you need to do is decide on what fits your tastes.
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="image" style="background: url(../images/experts2.jpg)"></div>
+					<div class="content">
+						<h3>Meet the experts</h3>
+
+						Drimhomz connects you with experts in the home design and remodelling field; we have all sorts of experts, from architects to interior designers and even remodellers who can advise you on the best patterns you can adopt as per your affordability rate.
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="image" style="background: url(../images/materials.jpg)"></div>
+					<div class="content">
+						<h3>Buy the building blocks(literary)</h3>
+
+						Drimhomz is also home to top and very well respected vendors for building materials, we have handpicked them based on service provision, pricing and just plain credibility. We hope you find them as accomodating as we did.
+					</div>
+				</div>
+			</div>
+
+			<div class="grid">
+				<template is="dom-repeat" items={{images}} 
+				as=image index-as=index>
+
+					<dh-grid-item
+						item="{{image}}">
+						</dh-grid-item>
+						
+				</template>
+			</div>
+		</div>
+
+		<dh-footer></dh-footer>
+	</template>
+	<script>
+		Polymer({
+			is: 'inspiration-page',
+			properties: {
+				images: {
+					notify: true,
+					value: []
+				}
+			}
+		});
+	</script>
+</dom-module>

@@ -1,0 +1,131 @@
+<dom-module id="dh-slideshow">
+	<template>
+		<style>
+			:host {
+				display: block;
+				position: relative;
+				height: 420px;
+				overflow: hidden;
+			}
+
+			.image{
+				background-color: #ddd;
+				background-size: cover;
+				background-position: center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				opacity: 0;
+			}
+
+			.prev{
+				-webkit-transform: translate(-10%);
+				-ms-transform: translate(-10%);
+				-o-transform: translate(-10%);
+				transform: translate(-10%);
+
+				-webkit-transition: transform 0.35s ease-out, opacity 0.35s ease-out;
+				-o-transition: transform 0.35s ease-out, opacity 0.35s ease-out;
+				transition: transform 0.35s ease-out, opacity 0.35s ease-out;
+			}
+
+			.cur{
+				opacity: 1;
+				-webkit-transform: none;
+				-ms-transform: none;
+				-o-transform: none;
+				transform: none;
+
+				-webkit-transition: transform 0.95s ease-out, opacity 0.95s ease-out;
+				-o-transition: transform 0.95s ease-out, opacity 0.95s ease-out;
+				transition: transform 0.95s ease-out, opacity 0.95s ease-out;
+			}
+		</style>
+
+		<div class="image prev" style="background-image: url(../images/slideshow/slide1.jpg)"></div>
+
+		<div class="image cur" style="background-image: url(../images/slideshow/slide2.jpg)"></div>
+
+		<div class="image next" style="background-image: url(../images/slideshow/slide3.jpg)"></div>
+
+		<div class="image" style="background-image: url(../images/slideshow/slide4.jpg)"></div>
+
+	</template>
+	<script>
+		var slideshowLoop;
+
+		Polymer({
+			is: 'dh-slideshow',
+			properties: {
+				curidx: {
+					notify: true,
+					value: 1,
+					observer: "_oncuridxChanged"
+				},
+				autoplay: {
+					notify: true,
+					value: false
+				},
+				duration: {
+					notify: true,
+					value: 4000
+				},
+				animation: {
+					notify: true,
+					value: "default"
+				},
+				images: {
+					notify: true,
+					value: []
+				}
+			},
+
+			ready: function(){
+				if(this.autoplay)
+					this.play();
+			},
+
+			play: function(){
+				var images = Polymer.dom(this.root).querySelectorAll(".image");
+
+				slideshowLoop = setInterval(function(){
+					var cur = this.curidx;
+					var images = Polymer.dom(this.root).querySelectorAll(".image");
+					var total = images.length - 1;
+					
+					var next = cur == total ? 0 : cur + 1;
+					var prev = cur == 0 ? total : cur - 1;
+
+					this._resetSlideshow(this.curidx, next, prev);
+				}.bind(this), this.duration);
+			},
+
+			pause: function(){
+				clearInterval(slideshowLoop);
+			},
+
+			_oncuridxChanged: function(){
+
+			},
+
+			_resetSlideshow: function(cur, next, prev){
+				var images = Polymer.dom(this.root).querySelectorAll(".image");
+
+				Polymer.dom(this.root).querySelector(".cur").classList.remove("cur");
+				images[cur].classList.add("cur");
+
+				Polymer.dom(this.root).querySelector(".next").classList.remove("next");
+				images[next].classList.add("next");
+
+				Polymer.dom(this.root).querySelector(".prev").classList.remove("prev");
+				images[prev].classList.add("prev");
+
+				setTimeout(function(){
+					this.curidx = this.curidx == images.length - 1 ? 0 : this.curidx + 1;
+				}.bind(this), 300);
+			}
+		});
+	</script>
+</dom-module>

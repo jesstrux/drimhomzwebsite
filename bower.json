@@ -1,0 +1,33 @@
+{
+  "name": "drimhomz",
+  "authors": [
+    "waky <wakyj07@gmail.com>"
+  ],
+  "description": "A meetup for house lovers, artists(architects) and vendors.",
+  "main": "index.html",
+  "keywords": [
+    "drimhomz",
+    "house",
+    "houses",
+    "tz",
+    "houses",
+    "in",
+    "tanzania"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^1.7.0",
+    "polymerfire": "^0.10.3",
+    "paper-styles": "^1.1.5",
+    "paper-button": "^1.0.14"
+  }
+}

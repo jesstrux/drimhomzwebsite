@@ -1,0 +1,34 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<dom-module id="profile-opener">
+	<template>
+		<style>
+			:host {
+				display: block;
+
+				@apply(--profile-opener);
+			}
+			paper-button{
+				padding: 5px;
+				margin-right: 0;
+				min-width: 0;
+				text-transform: none;
+			}
+		</style>
+		<paper-button>Login</paper-button>
+		|
+		<paper-button>Register</paper-button>
+	</template>
+	<script>
+		Polymer({
+			is: 'profile-opener',
+			properties: {
+				theUser:{
+					notify: true,
+					value: {}
+				}
+			}
+		});
+	</script>
+</dom-module>
